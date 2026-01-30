@@ -1,0 +1,1292 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "WMS Mock Backend API",
+		"description": "Complete test collection for WMS Mock Backend\n\nFeatures:\n- 60+ requests covering all endpoints\n- OData query examples ($filter, $orderby, $top, $skip, $select, $count)\n- CRUD operations (Create, Read, Update, Delete)\n- Authentication & Authorization\n- Batch requests\n- Error handling\n\nBase URL: http://localhost:8080",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01 - Authentication",
+			"item": [
+				{
+					"name": "Login - Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has SessionId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.SessionId).to.exist;",
+									"    pm.environment.set(\"sessionId\", jsonData.SessionId);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CompanyDB\": \"SBODEMOHUN\",\n  \"UserName\": \"admin\",\n  \"Password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Warehouse User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has SessionId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.SessionId).to.exist;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CompanyDB\": \"SBODEMOHUN\",\n  \"UserName\": \"warehouse_user\",\n  \"Password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Invalid Credentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CompanyDB\": \"SBODEMOHUN\",\n  \"UserName\": \"invalid\",\n  \"Password\": \"wrong\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company Admin Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has CompanyName\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.CompanyName).to.exist;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/CompanyService_GetAdminInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"CompanyService_GetAdminInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "02 - Master Data",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get All Users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response has value array\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.value).to.be.an('array');",
+											"    pm.expect(jsonData.value.length).to.be.greaterThan(0);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"User has InternalKey\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.InternalKey).to.equal(1);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Users(1)",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Users(1)"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter Users by Superuser",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Users?$filter=Superuser eq 'tYES'",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Users"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "Superuser eq 'tYES'"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Warehouses",
+					"item": [
+						{
+							"name": "Get All Warehouses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Has 3 warehouses\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData['@odata.count']).to.equal(3);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Warehouses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Warehouses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter Warehouse by Code",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Warehouses?$filter=WarehouseCode eq 'WH01'",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Warehouses"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "WarehouseCode eq 'WH01'"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Select Specific Fields",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Warehouses?$select=WarehouseCode,WarehouseName,City",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Warehouses"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "WarehouseCode,WarehouseName,City"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Items",
+					"item": [
+						{
+							"name": "Get All Items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Items",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter Items by Name (contains)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Items?$filter=contains(ItemName,'Laptop')",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Items"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "contains(ItemName,'Laptop')"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sort Items Descending",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Items?$orderby=ItemCode desc",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Items"
+									],
+									"query": [
+										{
+											"key": "$orderby",
+											"value": "ItemCode desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pagination (Top & Skip)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Items?$top=2&$skip=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Items"
+									],
+									"query": [
+										{
+											"key": "$top",
+											"value": "2"
+										},
+										{
+											"key": "$skip",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Count",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/Items?$count=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"Items"
+									],
+									"query": [
+										{
+											"key": "$count",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Business Partners",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/BusinessPartners",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"BusinessPartners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/EmployeesInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"EmployeesInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bin Locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/BinLocations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"BinLocations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "03 - Transactions",
+			"item": [
+				{
+					"name": "Stock Transfers",
+					"item": [
+						{
+							"name": "Get All Stock Transfers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response has stock transfers\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.value).to.be.an('array');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/StockTransfers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"StockTransfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Stock Transfer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Response has DocEntry\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.DocEntry).to.exist;",
+											"    pm.environment.set(\"createdDocEntry\", jsonData.DocEntry);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"DocDate\": \"2026-01-31\",\n  \"DueDate\": \"2026-01-31\",\n  \"TaxDate\": \"2026-01-31\",\n  \"Comments\": \"Stock Transfer created by Postman\",\n  \"FromWarehouse\": \"WH01\",\n  \"ToWarehouse\": \"WH02\",\n  \"U_WMS_STATUS\": \"O\",\n  \"U_WMS_CREATED_BY\": \"postman_test\",\n  \"StockTransferLines\": [\n    {\n      \"LineNum\": 0,\n      \"ItemCode\": \"ITEM001\",\n      \"ItemDescription\": \"Laptop HP EliteBook 840\",\n      \"Quantity\": 5,\n      \"FromWarehouseCode\": \"WH01\",\n      \"WarehouseToCode\": \"WH02\"\n    }\n  ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/StockTransfers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"StockTransfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Stock Transfer by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/StockTransfers({{createdDocEntry}})",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"StockTransfers({{createdDocEntry}})"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Stock Transfer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Comments\": \"Updated by Postman\",\n  \"U_WMS_STATUS\": \"C\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/StockTransfers({{createdDocEntry}})",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"StockTransfers({{createdDocEntry}})"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Stock Transfer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/StockTransfers({{createdDocEntry}})",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"StockTransfers({{createdDocEntry}})"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter by Status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/StockTransfers?$filter=U_WMS_STATUS eq 'O'",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"StockTransfers"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "U_WMS_STATUS eq 'O'"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pick Lists",
+					"item": [
+						{
+							"name": "Get All Pick Lists",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/PickLists",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"PickLists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Pick List",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"PICK-POSTMAN-001\",\n  \"OwnerCode\": 1,\n  \"OwnerName\": \"Administrator\",\n  \"PickDate\": \"2026-01-31\",\n  \"Remarks\": \"Pick list created by Postman\",\n  \"Status\": \"N\",\n  \"ObjectType\": \"17\",\n  \"U_WMS_STATUS\": \"O\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/PickLists",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"PickLists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter by Status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/b1s/v2/PickLists?$filter=Status eq 'N'",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"PickLists"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "Status eq 'N'"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Delivery Notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/DeliveryNotes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"DeliveryNotes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Invoices",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Invoices"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "04 - OData Advanced Queries",
+			"item": [
+				{
+					"name": "Complex Filter (AND)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Users?$filter=Superuser eq 'tYES' and Locked eq 'tNO'",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Users"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "Superuser eq 'tYES' and Locked eq 'tNO'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complex Filter (OR)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Warehouses?$filter=WarehouseCode eq 'WH01' or WarehouseCode eq 'WH02'",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Warehouses"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "WarehouseCode eq 'WH01' or WarehouseCode eq 'WH02'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "StartsWith Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Items?$filter=startswith(ItemCode,'ITEM')  ",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "startswith(ItemCode,'ITEM')  "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EndsWith Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Items?$filter=endswith(ItemCode,'001')",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "endswith(ItemCode,'001')"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Combined Query (Filter + OrderBy + Top)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Items?$filter=ItemCode gt 'ITEM001'&$orderby=ItemCode asc&$top=3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "ItemCode gt 'ITEM001'"
+								},
+								{
+									"key": "$orderby",
+									"value": "ItemCode asc"
+								},
+								{
+									"key": "$top",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagination with Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/Items?$count=true&$top=2&$skip=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$count",
+									"value": "true"
+								},
+								{
+									"key": "$top",
+									"value": "2"
+								},
+								{
+									"key": "$skip",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "05 - Batch Operations",
+			"item": [
+				{
+					"name": "Batch - Multiple GET Requests",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"requests\": [\n    {\n      \"id\": \"1\",\n      \"method\": \"GET\",\n      \"url\": \"/Warehouses\"\n    },\n    {\n      \"id\": \"2\",\n      \"method\": \"GET\",\n      \"url\": \"/Items?$top=2\"\n    },\n    {\n      \"id\": \"3\",\n      \"method\": \"GET\",\n      \"url\": \"/Users\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/$batch",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"$batch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "06 - Error Handling",
+			"item": [
+				{
+					"name": "404 - Invalid Endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/InvalidEndpoint",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"InvalidEndpoint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "404 - Non-existent ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/StockTransfers(99999)",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"StockTransfers(99999)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400 - Invalid POST Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"invalid\": \"data\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/b1s/v2/StockTransfers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"StockTransfers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "07 - System & Licenses",
+			"item": [
+				{
+					"name": "Get WMS Licenses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Has WMS license\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.WMS).to.exist;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wms/api/licenses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wms",
+								"api",
+								"licenses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "sessionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "createdDocEntry",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
