@@ -1,0 +1,27 @@
+{
+  "CORE_MODULES": {
+    "WMS_ADMIN": true,
+    "WMS_DASHBOARD": true,
+    "WMS_SETTINGS": true
+  },
+  "WMS_MODULES": {
+    "WMS_OWTQ": true,
+    "WMS_OWTR": true,
+    "WMS_OIGE": true,
+    "WMS_OIGN": true,
+    "WMS_ORDN": true,
+    "WMS_OPDN": true,
+    "WMS_ODLN": true,
+    "WMS_OINV": true,
+    "WMS_PICK": true,
+    "WMS_OWOR": true,
+    "WMS_OINC": true
+  },
+  "FEATURES": {
+    "BARCODE_SCANNER": true,
+    "VOICE_RECOGNITION": false,
+    "PRINTER_INTEGRATION": true,
+    "MOBILE_APP": true,
+    "OFFLINE_MODE": false
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#PickLists",
+  "@odata.count": 3,
+  "idCounter": 4,
+  "value": [
+    {
+      "Absoluteentry": 1,
+      "Name": "PICK-001",
+      "OwnerCode": 1,
+      "OwnerName": "Administrator",
+      "PickDate": "2026-01-28",
+      "Remarks": "Komissiózási lista - C00001",
+      "Status": "Y",
+      "ObjectType": "17",
+      "U_WMS_STATUS": "C",
+      "U_WMS_COMPLETED_DATE": "2026-01-28T16:30:00",
+      "PickListsLines": [
+        {
+          "AbsoluteEntry": 1,
+          "LineNumber": 0,
+          "OrderEntry": 101,
+          "OrderRowID": 0,
+          "PickedQuantity": 5,
+          "PickStatus": "Y",
+          "ReleasedQuantity": 5,
+          "PreviouslyReleasedQuantity": 0,
+          "BaseObjectType": 17,
+          "BaseEntry": 101,
+          "BaseLine": 0
+        }
+      ]
+    },
+    {
+      "Absoluteentry": 2,
+      "Name": "PICK-002",
+      "OwnerCode": 2,
+      "OwnerName": "Raktáros User",
+      "PickDate": "2026-01-29",
+      "Remarks": "Komissiózási lista - C00002",
+      "Status": "N",
+      "ObjectType": "17",
+      "U_WMS_STATUS": "O",
+      "PickListsLines": [
+        {
+          "AbsoluteEntry": 2,
+          "LineNumber": 0,
+          "OrderEntry": 102,
+          "OrderRowID": 0,
+          "PickedQuantity": 0,
+          "PickStatus": "N",
+          "ReleasedQuantity": 10,
+          "PreviouslyReleasedQuantity": 0,
+          "BaseObjectType": 17,
+          "BaseEntry": 102,
+          "BaseLine": 0
+        },
+        {
+          "AbsoluteEntry": 2,
+          "LineNumber": 1,
+          "OrderEntry": 102,
+          "OrderRowID": 1,
+          "PickedQuantity": 0,
+          "PickStatus": "N",
+          "ReleasedQuantity": 15,
+          "PreviouslyReleasedQuantity": 0,
+          "BaseObjectType": 17,
+          "BaseEntry": 102,
+          "BaseLine": 1
+        }
+      ]
+    },
+    {
+      "Absoluteentry": 3,
+      "Name": "PICK-003",
+      "OwnerCode": 2,
+      "OwnerName": "Raktáros User",
+      "PickDate": "2026-01-30",
+      "Remarks": "Komissiózási lista - C00003",
+      "Status": "P",
+      "ObjectType": "17",
+      "U_WMS_STATUS": "P",
+      "PickListsLines": [
+        {
+          "AbsoluteEntry": 3,
+          "LineNumber": 0,
+          "OrderEntry": 103,
+          "OrderRowID": 0,
+          "PickedQuantity": 3,
+          "PickStatus": "P",
+          "ReleasedQuantity": 8,
+          "PreviouslyReleasedQuantity": 0,
+          "BaseObjectType": 17,
+          "BaseEntry": 103,
+          "BaseLine": 0
+        }
+      ]
+    }
+  ]
+}

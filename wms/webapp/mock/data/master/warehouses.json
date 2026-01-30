@@ -1,0 +1,49 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#Warehouses",
+  "@odata.count": 3,
+  "value": [
+    {
+      "WarehouseCode": "WH01",
+      "WarehouseName": "Fő raktár",
+      "Street": "Ipari Park utca 12",
+      "City": "Budapest",
+      "ZipCode": "1117",
+      "County": "Budapest",
+      "Country": "HU",
+      "EnableBinLocations": "tYES",
+      "DefaultBin": 1,
+      "ManageSerialAndBatchNumbers": "tYES",
+      "Inactive": "tNO",
+      "U_WMS_BINLOCATION": "A-01-01",
+      "FederalTaxID": "12345678-1-23"
+    },
+    {
+      "WarehouseCode": "WH02",
+      "WarehouseName": "Másodlagos raktár",
+      "Street": "Logisztikai sugárút 45",
+      "City": "Debrecen",
+      "ZipCode": "4032",
+      "County": "Hajdú-Bihar",
+      "Country": "HU",
+      "EnableBinLocations": "tYES",
+      "DefaultBin": 50,
+      "ManageSerialAndBatchNumbers": "tNO",
+      "Inactive": "tNO",
+      "U_WMS_BINLOCATION": "B-01-01"
+    },
+    {
+      "WarehouseCode": "WH03",
+      "WarehouseName": "Szezonális raktár",
+      "Street": "Raktár utca 5",
+      "City": "Szeged",
+      "ZipCode": "6720",
+      "County": "Csongrád",
+      "Country": "HU",
+      "EnableBinLocations": "tYES",
+      "DefaultBin": 100,
+      "ManageSerialAndBatchNumbers": "tYES",
+      "Inactive": "tNO",
+      "U_WMS_BINLOCATION": "C-01-01"
+    }
+  ]
+}

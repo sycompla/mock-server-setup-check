@@ -1,0 +1,71 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#Users",
+  "entities": {
+    "1": {
+      "InternalKey": 1,
+      "UserCode": "admin",
+      "UserName": "Administrator",
+      "Superuser": "tYES",
+      "eMail": "admin@company.com",
+      "Mobile": "+36 30 123 4567",
+      "Locked": "tNO",
+      "UserPermission": [
+        {
+          "PermissionID": "ITCORE_WMS",
+          "Permission": "boper_Full"
+        },
+        {
+          "PermissionID": "WMS_OWTR",
+          "Permission": "boper_Full"
+        },
+        {
+          "PermissionID": "WMS_OWTQ",
+          "Permission": "boper_Full"
+        },
+        {
+          "PermissionID": "WMS_OIGN",
+          "Permission": "boper_Full"
+        },
+        {
+          "PermissionID": "WMS_OIGE",
+          "Permission": "boper_Full"
+        }
+      ]
+    },
+    "2": {
+      "InternalKey": 2,
+      "UserCode": "warehouse_user",
+      "UserName": "Raktáros User",
+      "Superuser": "tNO",
+      "eMail": "warehouse@company.com",
+      "Mobile": "+36 30 234 5678",
+      "Locked": "tNO",
+      "UserPermission": [
+        {
+          "PermissionID": "WMS_OWTR",
+          "Permission": "boper_Full"
+        },
+        {
+          "PermissionID": "WMS_PICK",
+          "Permission": "boper_Full"
+        }
+      ]
+    },
+    "3": {
+      "InternalKey": 3,
+      "UserCode": "manager",
+      "UserName": "Raktár Vezető",
+      "Superuser": "tNO",
+      "eMail": "manager@company.com",
+      "Mobile": "+36 30 345 6789",
+      "Locked": "tNO",
+      "UserPermission": [
+        {
+          "PermissionID": "ITCORE_WMS",
+          "Permission": "boper_Full"
+        }
+      ]
+    }
+  },
+  "currentUserId": "1"
+}

@@ -1,0 +1,148 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#Items",
+  "@odata.count": 10,
+  "value": [
+    {
+      "ItemCode": "ITEM001",
+      "ItemName": "Laptop HP EliteBook 840",
+      "ForeignName": "HP EliteBook 840 Laptop",
+      "ItemsGroupCode": 100,
+      "BarCode": "5901234123457",
+      "VATLiable": "tYES",
+      "PurchaseItem": "tYES",
+      "SalesItem": "tYES",
+      "InventoryItem": "tYES",
+      "IncomeAccount": "7001",
+      "ExemptIncomeAccount": "7002",
+      "ExpenseAccount": "5001",
+      "ManageBatchNumbers": "tNO",
+      "ManageSerialNumbers": "tYES",
+      "ManageStockByWarehouse": "tYES",
+      "U_WMS_BINLOCATION": "A-01-01",
+      "ItemWarehouseInfoCollection": [
+        {
+          "WarehouseCode": "WH01",
+          "InStock": 50,
+          "Committed": 10,
+          "Ordered": 20,
+          "Available": 40
+        },
+        {
+          "WarehouseCode": "WH02",
+          "InStock": 30,
+          "Committed": 5,
+          "Ordered": 0,
+          "Available": 25
+        }
+      ]
+    },
+    {
+      "ItemCode": "ITEM002",
+      "ItemName": "Monitor Dell 27\" 4K",
+      "ForeignName": "Dell 27 inch 4K Monitor",
+      "ItemsGroupCode": 100,
+      "BarCode": "5901234123464",
+      "VATLiable": "tYES",
+      "PurchaseItem": "tYES",
+      "SalesItem": "tYES",
+      "InventoryItem": "tYES",
+      "ManageBatchNumbers": "tNO",
+      "ManageSerialNumbers": "tYES",
+      "ManageStockByWarehouse": "tYES",
+      "U_WMS_BINLOCATION": "A-01-02",
+      "ItemWarehouseInfoCollection": [
+        {
+          "WarehouseCode": "WH01",
+          "InStock": 100,
+          "Committed": 20,
+          "Ordered": 50,
+          "Available": 80
+        }
+      ]
+    },
+    {
+      "ItemCode": "ITEM003",
+      "ItemName": "Billentyűzet Logitech MX Keys",
+      "ForeignName": "Logitech MX Keys Keyboard",
+      "ItemsGroupCode": 101,
+      "BarCode": "5901234123471",
+      "VATLiable": "tYES",
+      "PurchaseItem": "tYES",
+      "SalesItem": "tYES",
+      "InventoryItem": "tYES",
+      "ManageBatchNumbers": "tNO",
+      "ManageSerialNumbers": "tNO",
+      "ManageStockByWarehouse": "tYES",
+      "U_WMS_BINLOCATION": "A-02-01",
+      "ItemWarehouseInfoCollection": [
+        {
+          "WarehouseCode": "WH01",
+          "InStock": 200,
+          "Committed": 30,
+          "Ordered": 100,
+          "Available": 170
+        },
+        {
+          "WarehouseCode": "WH02",
+          "InStock": 150,
+          "Committed": 20,
+          "Ordered": 0,
+          "Available": 130
+        }
+      ]
+    },
+    {
+      "ItemCode": "ITEM004",
+      "ItemName": "Egér Logitech MX Master 3",
+      "ForeignName": "Logitech MX Master 3 Mouse",
+      "ItemsGroupCode": 101,
+      "BarCode": "5901234123488",
+      "VATLiable": "tYES",
+      "PurchaseItem": "tYES",
+      "SalesItem": "tYES",
+      "InventoryItem": "tYES",
+      "ManageBatchNumbers": "tNO",
+      "ManageSerialNumbers": "tNO",
+      "ManageStockByWarehouse": "tYES",
+      "ItemWarehouseInfoCollection": [
+        {
+          "WarehouseCode": "WH01",
+          "InStock": 180,
+          "Committed": 25,
+          "Ordered": 50,
+          "Available": 155
+        }
+      ]
+    },
+    {
+      "ItemCode": "ITEM005",
+      "ItemName": "Headset Jabra Evolve 75",
+      "ForeignName": "Jabra Evolve 75 Headset",
+      "ItemsGroupCode": 102,
+      "BarCode": "5901234123495",
+      "VATLiable": "tYES",
+      "PurchaseItem": "tYES",
+      "SalesItem": "tYES",
+      "InventoryItem": "tYES",
+      "ManageBatchNumbers": "tNO",
+      "ManageSerialNumbers": "tYES",
+      "ManageStockByWarehouse": "tYES",
+      "ItemWarehouseInfoCollection": [
+        {
+          "WarehouseCode": "WH01",
+          "InStock": 60,
+          "Committed": 10,
+          "Ordered": 30,
+          "Available": 50
+        },
+        {
+          "WarehouseCode": "WH03",
+          "InStock": 40,
+          "Committed": 5,
+          "Ordered": 0,
+          "Available": 35
+        }
+      ]
+    }
+  ]
+}

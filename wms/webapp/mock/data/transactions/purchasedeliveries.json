@@ -1,0 +1,6 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#purchasedeliveries",
+  "@odata.count": 0,
+  "idCounter": 1,
+  "value": []
+}

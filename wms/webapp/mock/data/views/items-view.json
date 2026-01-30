@@ -1,0 +1,66 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#NTT_UI5WMS_ITEMS_B1SLQuery",
+  "@odata.count": 5,
+  "value": [
+    {
+      "ItemCode": "ITEM001",
+      "ItemName": "Laptop HP EliteBook 840",
+      "BarCode": "5901234123457",
+      "WarehouseCode": "WH01",
+      "OnHand": 50,
+      "Committed": 10,
+      "OnOrder": 20,
+      "Available": 40,
+      "BinCode": "A-01-01",
+      "BinAbsEntry": 1
+    },
+    {
+      "ItemCode": "ITEM002",
+      "ItemName": "Monitor Dell 27\" 4K",
+      "BarCode": "5901234123464",
+      "WarehouseCode": "WH01",
+      "OnHand": 100,
+      "Committed": 20,
+      "OnOrder": 50,
+      "Available": 80,
+      "BinCode": "A-01-02",
+      "BinAbsEntry": 2
+    },
+    {
+      "ItemCode": "ITEM003",
+      "ItemName": "Billentyűzet Logitech MX Keys",
+      "BarCode": "5901234123471",
+      "WarehouseCode": "WH01",
+      "OnHand": 200,
+      "Committed": 30,
+      "OnOrder": 100,
+      "Available": 170,
+      "BinCode": "A-02-01",
+      "BinAbsEntry": 3
+    },
+    {
+      "ItemCode": "ITEM004",
+      "ItemName": "Egér Logitech MX Master 3",
+      "BarCode": "5901234123488",
+      "WarehouseCode": "WH01",
+      "OnHand": 180,
+      "Committed": 25,
+      "OnOrder": 50,
+      "Available": 155,
+      "BinCode": "A-01-01",
+      "BinAbsEntry": 1
+    },
+    {
+      "ItemCode": "ITEM005",
+      "ItemName": "Headset Jabra Evolve 75",
+      "BarCode": "5901234123495",
+      "WarehouseCode": "WH01",
+      "OnHand": 60,
+      "Committed": 10,
+      "OnOrder": 30,
+      "Available": 50,
+      "BinCode": "A-01-02",
+      "BinAbsEntry": 2
+    }
+  ]
+}

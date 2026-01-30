@@ -1,0 +1,16 @@
+{
+  "Code": "SBODEMOHU",
+  "CompanyName": "SBODEM HU",
+  "Country": "HU",
+  "LanguageCode": 25,
+  "MainCurrency": "HUF",
+  "SystemCurrency": "HUF",
+  "LocalCurrency": "HUF",
+  "EnableExpensesManagement": "tYES",
+  "EnableSerialNumbers": "tYES",
+  "EnableBatchNumbers": "tYES",
+  "EnableBins": "tYES",
+  "ManageSerialAndBatchNumbers": "tYES",
+  "Version": "1000260",
+  "ServerName": "mock-server"
+}

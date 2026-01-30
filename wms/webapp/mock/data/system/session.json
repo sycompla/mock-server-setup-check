@@ -1,0 +1,22 @@
+{
+  "SessionInfo": {
+    "SessionId": "mock-session-1738268400000",
+    "Version": "1000260",
+    "SessionTimeout": 30,
+    "Server": "mock-server",
+    "Company": "SBODEMOHU",
+    "CompanyDB": "SBODEMOHU",
+    "User": "admin",
+    "UserID": 1,
+    "Language": 25,
+    "LanguageCode": "hu",
+    "Timeout": 1800000
+  },
+  "User": {
+    "InternalKey": 1,
+    "UserCode": "admin",
+    "UserName": "Administrator",
+    "Superuser": "tYES",
+    "eMail": "admin@company.com"
+  }
+}

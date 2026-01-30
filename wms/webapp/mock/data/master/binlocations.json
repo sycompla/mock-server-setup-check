@@ -1,0 +1,90 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#BinLocations",
+  "@odata.count": 12,
+  "value": [
+    {
+      "AbsEntry": 1,
+      "Warehouse": "WH01",
+      "BinCode": "A-01-01",
+      "BinLocation": "A-01-01",
+      "Aisle": "A",
+      "Row": "01",
+      "Level": "01",
+      "Inactive": "tNO",
+      "BarCode": "BIN-A0101",
+      "Minimum": 0,
+      "Maximum": 1000,
+      "Description": "Fő raktár A sor 1"
+    },
+    {
+      "AbsEntry": 2,
+      "Warehouse": "WH01",
+      "BinCode": "A-01-02",
+      "BinLocation": "A-01-02",
+      "Aisle": "A",
+      "Row": "01",
+      "Level": "02",
+      "Inactive": "tNO",
+      "BarCode": "BIN-A0102",
+      "Minimum": 0,
+      "Maximum": 1000,
+      "Description": "Fő raktár A sor 2"
+    },
+    {
+      "AbsEntry": 3,
+      "Warehouse": "WH01",
+      "BinCode": "A-02-01",
+      "BinLocation": "A-02-01",
+      "Aisle": "A",
+      "Row": "02",
+      "Level": "01",
+      "Inactive": "tNO",
+      "BarCode": "BIN-A0201",
+      "Minimum": 0,
+      "Maximum": 500,
+      "Description": "Fő raktár A sor 2-1"
+    },
+    {
+      "AbsEntry": 50,
+      "Warehouse": "WH02",
+      "BinCode": "B-01-01",
+      "BinLocation": "B-01-01",
+      "Aisle": "B",
+      "Row": "01",
+      "Level": "01",
+      "Inactive": "tNO",
+      "BarCode": "BIN-B0101",
+      "Minimum": 0,
+      "Maximum": 800,
+      "Description": "Másodlagos raktár B sor"
+    },
+    {
+      "AbsEntry": 51,
+      "Warehouse": "WH02",
+      "BinCode": "B-01-02",
+      "BinLocation": "B-01-02",
+      "Aisle": "B",
+      "Row": "01",
+      "Level": "02",
+      "Inactive": "tNO",
+      "BarCode": "BIN-B0102",
+      "Minimum": 0,
+      "Maximum": 800,
+      "Description": "Másodlagos raktár B sor 2"
+    },
+    {
+      "AbsEntry": 100,
+      "Warehouse": "WH03",
+      "BinCode": "C-01-01",
+      "BinLocation": "C-01-01",
+      "Aisle": "C",
+      "Row": "01",
+      "Level": "01",
+      "Inactive": "tNO",
+      "BarCode": "BIN-C0101",
+      "Minimum": 0,
+      "Maximum": 500,
+      "Description": "Szezonális raktár C sor"
+    }
+  ]
+}

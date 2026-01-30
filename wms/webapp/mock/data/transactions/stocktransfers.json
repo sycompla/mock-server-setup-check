@@ -1,0 +1,138 @@
+{
+  "@odata.context": "/b1s/v2/$metadata#StockTransfers",
+  "@odata.count": 5,
+  "idCounter": 6,
+  "value": [
+    {
+      "DocEntry": 1,
+      "DocNum": 1,
+      "Series": 10,
+      "DocDate": "2026-01-28",
+      "DueDate": "2026-01-28",
+      "TaxDate": "2026-01-28",
+      "Comments": "Készletáttárolás WH01 → WH02",
+      "JournalMemo": "STR-001",
+      "PriceList": 1,
+      "SalesPersonCode": -1,
+      "FromWarehouse": "WH01",
+      "ToWarehouse": "WH02",
+      "U_WMS_STATUS": "C",
+      "U_WMS_CREATED_BY": "admin",
+      "U_WMS_CREATED_DATE": "2026-01-28T10:15:00",
+      "StockTransferLines": [
+        {
+          "LineNum": 0,
+          "ItemCode": "ITEM001",
+          "ItemDescription": "Laptop HP EliteBook 840",
+          "Quantity": 10,
+          "Price": 0,
+          "Currency": "HUF",
+          "WarehouseCode": "WH01",
+          "FromWarehouseCode": "WH01",
+          "WarehouseToCode": "WH02",
+          "BinAbsEntry": 1,
+          "U_WMS_BINLOCATION": "A-01-01",
+          "SerialNumbers": [],
+          "BatchNumbers": [],
+          "StockTransferLinesBinAllocations": [
+            {
+              "BinAbsEntry": 1,
+              "BinCode": "A-01-01",
+              "Quantity": 10,
+              "BinActionType": "batFromWarehouse",
+              "SerialAndBatchNumbersBaseLine": -1
+            },
+            {
+              "BinAbsEntry": 50,
+              "BinCode": "B-01-01",
+              "Quantity": 10,
+              "BinActionType": "batToWarehouse",
+              "SerialAndBatchNumbersBaseLine": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "DocEntry": 2,
+      "DocNum": 2,
+      "Series": 10,
+      "DocDate": "2026-01-29",
+      "DueDate": "2026-01-29",
+      "TaxDate": "2026-01-29",
+      "Comments": "Készletáttárolás WH02 → WH03",
+      "JournalMemo": "STR-002",
+      "FromWarehouse": "WH02",
+      "ToWarehouse": "WH03",
+      "U_WMS_STATUS": "O",
+      "U_WMS_CREATED_BY": "warehouse_user",
+      "U_WMS_CREATED_DATE": "2026-01-29T14:30:00",
+      "StockTransferLines": [
+        {
+          "LineNum": 0,
+          "ItemCode": "ITEM002",
+          "ItemDescription": "Monitor Dell 27\" 4K",
+          "Quantity": 20,
+          "FromWarehouseCode": "WH02",
+          "WarehouseToCode": "WH03",
+          "BinAbsEntry": 50,
+          "U_WMS_BINLOCATION": "B-01-01",
+          "StockTransferLinesBinAllocations": [
+            {
+              "BinAbsEntry": 50,
+              "BinCode": "B-01-01",
+              "Quantity": 20,
+              "BinActionType": "batFromWarehouse"
+            },
+            {
+              "BinAbsEntry": 100,
+              "BinCode": "C-01-01",
+              "Quantity": 20,
+              "BinActionType": "batToWarehouse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "DocEntry": 3,
+      "DocNum": 3,
+      "Series": 10,
+      "DocDate": "2026-01-30",
+      "DueDate": "2026-01-30",
+      "TaxDate": "2026-01-30",
+      "Comments": "Készletáttárolás WH01 → WH03",
+      "FromWarehouse": "WH01",
+      "ToWarehouse": "WH03",
+      "U_WMS_STATUS": "O",
+      "U_WMS_CREATED_BY": "admin",
+      "U_WMS_CREATED_DATE": "2026-01-30T09:00:00",
+      "StockTransferLines": [
+        {
+          "LineNum": 0,
+          "ItemCode": "ITEM003",
+          "ItemDescription": "Billentyűzet Logitech MX Keys",
+          "Quantity": 50,
+          "FromWarehouseCode": "WH01",
+          "WarehouseToCode": "WH03",
+          "BinAbsEntry": 3,
+          "U_WMS_BINLOCATION": "A-02-01",
+          "StockTransferLinesBinAllocations": [
+            {
+              "BinAbsEntry": 3,
+              "BinCode": "A-02-01",
+              "Quantity": 50,
+              "BinActionType": "batFromWarehouse"
+            },
+            {
+              "BinAbsEntry": 100,
+              "BinCode": "C-01-01",
+              "Quantity": 50,
+              "BinActionType": "batToWarehouse"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
