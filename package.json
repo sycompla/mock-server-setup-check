@@ -11,6 +11,11 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:debug": "playwright test --debug",
+    "test:curl": "bash tests/curl/run-all-tests.sh",
+    "test:curl:basic": "bash tests/curl/01-basic-endpoints.sh",
+    "test:curl:odata": "bash tests/curl/02-odata-queries.sh",
+    "test:curl:crud": "bash tests/curl/03-crud-operations.sh",
+    "test:curl:auth": "bash tests/curl/04-authentication.sh",
     "test:all": "npm run test && npm run test:e2e",
     "validate:json": "bash scripts/validate-mock-data.sh"
   },
@@ -21,9 +26,5 @@
     "jest": "^29.5.0",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.0"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
   }
 }
