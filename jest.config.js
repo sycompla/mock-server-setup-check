@@ -1,7 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ['<rootDir>/wms/webapp'],
+  roots: ['<rootDir>/test'],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
     '**/?(*.)+(spec|test).+(ts|tsx|js)'
@@ -11,8 +11,8 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverageFrom: [
-    'wms/webapp/mock/services/**/*.{ts,tsx}',
-    '!wms/webapp/mock/services/**/*.d.ts'
+    'mock/services/**/*.{ts,tsx}',
+    '!mock/services/**/*.d.ts'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],

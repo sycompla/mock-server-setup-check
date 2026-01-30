@@ -84,9 +84,9 @@
 
 1. **Copy files to target project:**
    ```bash
-   cp -r wms/webapp/mock /path/to/project/wms/webapp/
-   cp -r wms/webapp/config /path/to/project/wms/webapp/
-   cp wms/webapp/services/ConfigService.ts /path/to/project/wms/webapp/services/
+   cp -r mock /path/to/project/
+   cp -r config /path/to/project/
+   cp services/ConfigService.ts /path/to/project/services/
    ```
 
 2. **Modify Component.ts** (see MOCK_BACKEND_INSTALL.md for details):

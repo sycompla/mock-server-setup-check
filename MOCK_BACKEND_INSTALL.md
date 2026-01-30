@@ -10,7 +10,7 @@ A `mock-backend-portable.tar.gz` archívum tartalmazza:
 
 ```
 mock-backend-portable.tar.gz
-├── wms/webapp/mock/              # Mock rendszer magja
+├── mock/              # Mock rendszer magja
 │   ├── data/                     # Mock JSON adatok
 │   │   ├── master/               # Master adatok (users, warehouses, items, stb.)
 │   │   ├── transactions/         # Tranzakciós dokumentumok (12 modul)
@@ -24,7 +24,7 @@ mock-backend-portable.tar.gz
 │   │   └── MockWebSocketService.ts
 │   └── README.md                 # Mock rendszer leírás
 │
-├── wms/webapp/config/
+├── config/
 │   └── AppConfig.ts              # Központi konfiguráció
 │
 ├── .env.example                  # Environment változó sablon
@@ -62,8 +62,8 @@ bash /tmp/mock-backend/scripts/install-mock-backend.sh
 ```
 
 **Mit csinál a script?**
-- ✅ Átmásolja a `wms/webapp/mock/` könyvtárat
-- ✅ Átmásolja a `wms/webapp/config/` könyvtárat
+- ✅ Átmásolja a `mock/` könyvtárat
+- ✅ Átmásolja a `config/` könyvtárat
 - ✅ Létrehozza a `.env.example` fájlt
 - ✅ Frissíti a `.gitignore` fájlt
 - ✅ Átmásolja a dokumentációt
@@ -83,8 +83,8 @@ tar -xzf /path/to/mock-backend-portable.tar.gz
 ```
 
 Ez automatikusan a megfelelő helyekre rakja a fájlokat:
-- `wms/webapp/mock/`
-- `wms/webapp/config/`
+- `mock/`
+- `config/`
 - `.env.example`
 - `docs/`
 - stb.
@@ -102,7 +102,7 @@ Ha a projekt már rendelkezik `.gitignore` fájllal, add hozzá ezeket a sorokat
 ui5-local.yaml
 
 # Mock data customizations (optional)
-wms/webapp/mock/data/custom/
+mock/data/custom/
 
 # Build artifacts
 dist-mock/
@@ -116,7 +116,7 @@ A mock backend használatához **3 fájlt kell módosítani/létrehozni**:
 
 ### 1. ConfigService.ts létrehozása
 
-**Fájl:** `wms/webapp/services/ConfigService.ts`
+**Fájl:** `services/ConfigService.ts`
 
 ```typescript
 import BaseService from "./BaseService";
@@ -172,7 +172,7 @@ export default class ConfigService extends BaseService {
 
 ### 2. Component.ts módosítása
 
-**Fájl:** `wms/webapp/Component.ts`
+**Fájl:** `Component.ts`
 
 #### Import-ok hozzáadása (fájl elején):
 
@@ -411,7 +411,7 @@ Real:  http://localhost:8080/index.html?mock=false
 
 ```bash
 # Ellenőrzés
-ls wms/webapp/config/AppConfig.ts
+ls config/AppConfig.ts
 
 # Ha hiányzik, csomagold ki újra az archívumot
 ```
@@ -424,8 +424,8 @@ ls wms/webapp/config/AppConfig.ts
 
 ```bash
 # Ellenőrzés
-ls wms/webapp/mock/data/master/
-ls wms/webapp/mock/data/system/
+ls mock/data/master/
+ls mock/data/system/
 
 # Fájloknak léteznie kell
 ```
@@ -459,11 +459,11 @@ Nézd meg a teljes hibaelhárítási útmutatót:
 Használd ezt a checklistet a telepítés ellenőrzéséhez:
 
 - [ ] Archívum kicsomagolva
-- [ ] `wms/webapp/mock/` mappa létezik
-- [ ] `wms/webapp/config/AppConfig.ts` létezik
+- [ ] `mock/` mappa létezik
+- [ ] `config/AppConfig.ts` létezik
 - [ ] `.env.example` létezik
 - [ ] `.gitignore` frissítve
-- [ ] `ConfigService.ts` létrehozva (`wms/webapp/services/`)
+- [ ] `ConfigService.ts` létrehozva (`services/`)
 - [ ] `Component.ts` módosítva (import, init, createODataModel)
 - [ ] `package.json` frissítve (scriptek)
 - [ ] `.env` fájl létrehozva (`cp .env.example .env`)
@@ -482,7 +482,7 @@ Ha eljutottál idáig, a Mock Backend sikeresen telepítve van! 🚀
 **Következő lépések:**
 
 1. Olvasd el a [Fejlesztői Útmutatót](docs/mock-backend-fejlesztoi-utmutato.md)
-2. Nézd meg a [Mock Adatok](wms/webapp/mock/data/) struktúráját
+2. Nézd meg a [Mock Adatok](mock/data/) struktúráját
 3. Próbálj ki különböző WMS modulokat
 4. Hozz létre saját mock adatokat
 

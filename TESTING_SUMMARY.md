@@ -118,19 +118,19 @@ Teljes teszt dokumentáció: **TEST_SCENARIOS.md**
 ### Implementálandó Tesztek
 
 3. **Unit Tesztek** (Jest/QUnit)
-   - Létrehozni: `wms/webapp/test/unit/mock/` könyvtár
+   - Létrehozni: `test/unit/mock/` könyvtár
    - Test fájlok:
      - `ODataQueryEngine.test.ts`
      - `MockDataLoader.test.ts`
      - `MockRestService.test.ts`
 
 4. **Integrációs Tesztek** (Jest/QUnit)
-   - Létrehozni: `wms/webapp/test/integration/mock/` könyvtár
+   - Létrehozni: `test/integration/mock/` könyvtár
    - Test fájlok:
      - `MockBackend.integration.test.ts`
 
 5. **E2E Tesztek** (Playwright/Cypress)
-   - Létrehozni: `wms/webapp/test/e2e/` könyvtár
+   - Létrehozni: `test/e2e/` könyvtár
    - Test fájlok:
      - `StockTransfer.e2e.test.ts`
      - `PickList.e2e.test.ts`

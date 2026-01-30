@@ -21,7 +21,7 @@ bash scripts/install-mock-backend.sh
 ## ⚙️ Szükséges Módosítások
 
 ### 1. ConfigService.ts (új fájl)
-`wms/webapp/services/ConfigService.ts` → Lásd `MOCK_BACKEND_INSTALL.md`
+`services/ConfigService.ts` → Lásd `MOCK_BACKEND_INSTALL.md`
 
 ### 2. Component.ts
 ```typescript
@@ -93,7 +93,7 @@ http://localhost:8080/index.html?mock=false  # Real
 ## 📁 Mock Adatok Helye
 
 ```
-wms/webapp/mock/data/
+mock/data/
 ├── master/              # users, warehouses, items, stb.
 ├── transactions/        # 12 modul dokumentumai
 ├── system/              # licenses, session, modules
@@ -143,8 +143,8 @@ console.log('Mock mode:', window.WMS_CONFIG.BACKEND_MODE);
 
 | Probléma | Megoldás |
 |----------|----------|
-| `Cannot find module './config/AppConfig'` | `ls wms/webapp/config/AppConfig.ts` |
-| `MockDataLoader: Failed to load` | `ls wms/webapp/mock/data/master/` |
+| `Cannot find module './config/AppConfig'` | `ls config/AppConfig.ts` |
+| `MockDataLoader: Failed to load` | `ls mock/data/master/` |
 | Backend mode: real (mock helyett) | `.env`-ben `BACKEND_MODE=mock` |
 | RestService undefined | `ConfigService` nincs inicializálva |
 
@@ -165,8 +165,8 @@ console.log('Mock mode:', window.WMS_CONFIG.BACKEND_MODE);
 
 ```
 mock-backend-portable.tar.gz (34 KB)
-├── wms/webapp/mock/              # Mock rendszer
-├── wms/webapp/config/            # AppConfig.ts
+├── mock/              # Mock rendszer
+├── config/            # AppConfig.ts
 ├── .env.example                  # Környezeti változók
 ├── .gitignore                    # Frissített
 ├── docs/                         # Dokumentáció (4 fájl)

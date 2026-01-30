@@ -45,8 +45,8 @@ MOCK_DATA_PATH=/mock
 npm run generate:mock-data
 
 # Ellenőrizd, hogy létrejöttek
-ls -la wms/webapp/mock/data/master/
-ls -la wms/webapp/mock/data/transactions/
+ls -la mock/data/master/
+ls -la mock/data/transactions/
 ```
 
 ### 3. Alkalmazás Indítása Mock Módban
@@ -151,7 +151,7 @@ if (urlParams.has('mock')) {
 ### Könyvtárstruktúra
 
 ```
-wms/webapp/mock/data/
+mock/data/
 ├── master/
 │   ├── users.json              # Felhasználók
 │   ├── warehouses.json         # Raktárak
@@ -285,7 +285,7 @@ wms/webapp/mock/data/
 
 ```bash
 # Új JSON fájl létrehozása
-nano wms/webapp/mock/data/master/customers.json
+nano mock/data/master/customers.json
 ```
 
 ```json
@@ -333,7 +333,7 @@ function generateCustomers(count = 20) {
         "value": customers
     };
 
-    const outputPath = path.join(__dirname, '../wms/webapp/mock/data/master/customers.json');
+    const outputPath = path.join(__dirname, '../mock/data/master/customers.json');
     fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
 
     console.log(`✅ Generated ${count} customers → ${outputPath}`);
@@ -390,7 +390,7 @@ node scripts/generateCustomers.js
 echo "BACKEND_MODE=mock" > .env
 
 # 2. Új mock adatok készítése az új funkcióhoz
-nano wms/webapp/mock/data/transactions/new-feature.json
+nano mock/data/transactions/new-feature.json
 
 # 3. Fejlesztés
 npm run start:mock
@@ -403,7 +403,7 @@ echo "BACKEND_MODE=real" > .env
 npm run start
 
 # 6. Commit
-git add wms/webapp/mock/data/transactions/new-feature.json
+git add mock/data/transactions/new-feature.json
 git commit -m "Add mock data for new feature"
 ```
 
@@ -445,11 +445,11 @@ if (path === '/CustomReports/Generate') {
 
 ```bash
 # 1. Készíts mock adatot ami reprodukálja a bug-ot
-cp wms/webapp/mock/data/transactions/stocktransfers.json \
-   wms/webapp/mock/data/custom/bug-stocktransfer.json
+cp mock/data/transactions/stocktransfers.json \
+   mock/data/custom/bug-stocktransfer.json
 
 # 2. Szerkeszd a custom file-t a hibás állapot létrehozásához
-nano wms/webapp/mock/data/custom/bug-stocktransfer.json
+nano mock/data/custom/bug-stocktransfer.json
 # Pl.: Hiányzó FromWarehouse, negatív Quantity, stb.
 
 # 3. MockDataLoader-ben prioritizáld a custom file-t
@@ -458,7 +458,7 @@ nano wms/webapp/mock/data/custom/bug-stocktransfer.json
 # 4. Reprodukáld és fix-eld a bug-ot
 
 # 5. Commit a bug reprodukáló mock adatot (regressziós teszthez)
-git add wms/webapp/mock/data/custom/bug-stocktransfer.json
+git add mock/data/custom/bug-stocktransfer.json
 git commit -m "Add mock data to reproduce issue #123"
 ```
 
@@ -470,14 +470,14 @@ git commit -m "Add mock data to reproduce issue #123"
 # Developer A - Mock adatok módosítása
 git checkout -b feature/warehouse-management
 # ... mock adatok módosítása ...
-git add wms/webapp/mock/data/master/warehouses.json
+git add mock/data/master/warehouses.json
 git commit -m "Add new warehouses for testing"
 git push origin feature/warehouse-management
 
 # Developer B - Saját mock adatok (nem committálva)
 # .gitignore miatt custom/ mappa nem kerül git-be
-mkdir -p wms/webapp/mock/data/custom/
-nano wms/webapp/mock/data/custom/my-test-data.json
+mkdir -p mock/data/custom/
+nano mock/data/custom/my-test-data.json
 # ... lokális tesztelés ...
 ```
 
@@ -494,7 +494,7 @@ nano wms/webapp/mock/data/custom/my-test-data.json
 **Példa: CrystalReportsService mock-olása**
 
 ```typescript
-// wms/webapp/services/CrystalReportsService.ts (meglévő)
+// services/CrystalReportsService.ts (meglévő)
 export default class CrystalReportsService {
     async generateReport(reportCode: string, params: any): Promise<Blob> {
         // Real implementation
@@ -509,7 +509,7 @@ export default class CrystalReportsService {
 ### 2. Mock Service Implementáció
 
 ```typescript
-// wms/webapp/mock/services/MockCrystalReportsService.ts (ÚJ)
+// mock/services/MockCrystalReportsService.ts (ÚJ)
 import CrystalReportsService from "../../services/CrystalReportsService";
 
 export default class MockCrystalReportsService extends CrystalReportsService {
@@ -546,7 +546,7 @@ Generated: ${new Date().toISOString()}`;
 ### 3. ConfigService Integráció
 
 ```typescript
-// wms/webapp/services/ConfigService.ts
+// services/ConfigService.ts
 import MockCrystalReportsService from "../mock/services/MockCrystalReportsService";
 
 export default class ConfigService extends BaseService {
@@ -588,7 +588,7 @@ public async generateReport(reportCode: string, params: any): Promise<Blob> {
 **ODataQueryEngine tesztelése:**
 
 ```typescript
-// wms/webapp/test/unit/mock/ODataQueryEngine.test.ts
+// test/unit/mock/ODataQueryEngine.test.ts
 import ODataQueryEngine from "../../../mock/services/ODataQueryEngine";
 
 describe("ODataQueryEngine", () => {
@@ -662,7 +662,7 @@ npm run unit-tests
 **MockRestService tesztelése:**
 
 ```typescript
-// wms/webapp/test/integration/MockRestService.test.ts
+// test/integration/MockRestService.test.ts
 import MockRestService from "../../../mock/services/MockRestService";
 
 describe("MockRestService Integration", () => {
@@ -776,7 +776,7 @@ describe('Stock Transfer Flow (Mock Backend)', () => {
 
 ```bash
 # 1. Mock adat fájl létrehozása
-nano wms/webapp/mock/data/master/productionlines.json
+nano mock/data/master/productionlines.json
 ```
 
 ```json
@@ -796,7 +796,7 @@ nano wms/webapp/mock/data/master/productionlines.json
 
 ```typescript
 // 2. MockDataLoader mappingjében hozzáadás
-// wms/webapp/mock/services/MockDataLoader.ts
+// mock/services/MockDataLoader.ts
 
 private entitySetMapping = {
     // ... existing
@@ -1084,7 +1084,7 @@ console.log('RestService type:', component.getRestService().constructor.name);
 
 ```bash
 # 1. Ellenőrizd a fájl létezését
-ls -la wms/webapp/mock/data/master/warehouses.json
+ls -la mock/data/master/warehouses.json
 
 # 2. Ellenőrizd az ui5.yaml konfigurációt
 # Kell egy servestatic middleware a /mock path-hoz
@@ -1145,7 +1145,7 @@ Ez az útmutató mindennel ellátott a WMS mock backend használatához és fejl
 
 1. Nézd meg a [Mock Backend Architektúra](./mock-backend-architektura.md) dokumentumot
 2. Olvasd el a [Projekt Összefoglalót](./projekt-osszefoglalo.md)
-3. Tekintsd meg a forráskódot: `wms/webapp/mock/` és `wms/webapp/config/`
+3. Tekintsd meg a forráskódot: `mock/` és `config/`
 
 **Következő lépések:**
 - [ ] Generáld a mock adatokat: `npm run generate:mock-data`

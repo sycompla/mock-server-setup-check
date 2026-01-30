@@ -123,7 +123,7 @@
 ```
 /Volumes/DevAPFS/work/ui5/mock-server-setup-check/
 │
-├── wms/webapp/
+├── 
 │   ├── config/
 │   │   └── AppConfig.ts
 │   ├── services/
@@ -210,9 +210,9 @@ npm run validate:json
 ### 2. Integration into WMS Project
 ```bash
 # Copy mock backend files
-cp -r wms/webapp/mock /path/to/wms/wms/webapp/
-cp -r wms/webapp/config /path/to/wms/wms/webapp/
-cp wms/webapp/services/ConfigService.ts /path/to/wms/wms/webapp/services/
+cp -r mock /path/to/wms/
+cp -r config /path/to/wms/
+cp services/ConfigService.ts /path/to/wms/services/
 
 # Create .env
 echo "BACKEND_MODE=mock" > /path/to/wms/.env

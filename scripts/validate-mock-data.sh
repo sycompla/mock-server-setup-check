@@ -8,7 +8,7 @@ echo "Mock Backend Data Validation"
 echo "================================================"
 echo ""
 
-MOCK_DATA_DIR="wms/webapp/mock/data"
+MOCK_DATA_DIR="mock/data"
 TOTAL_FILES=0
 VALID_FILES=0
 INVALID_FILES=0

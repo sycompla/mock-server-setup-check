@@ -236,7 +236,7 @@ test('should load stock transfer list view', async ({ page }) => {
 
 ```
 /Volumes/DevAPFS/work/ui5/mock-server-setup-check/
-├── wms/webapp/test/
+├── test/
 │   ├── unit/mock/
 │   │   ├── ODataQueryEngine.test.ts    (19 tests)
 │   │   ├── MockDataLoader.test.ts      (14 tests)
@@ -259,20 +259,20 @@ test('should load stock transfer list view', async ({ page }) => {
 ### Jest Tests (if all dependencies installed)
 
 ```
- PASS  wms/webapp/test/unit/mock/ODataQueryEngine.test.ts
+ PASS  test/unit/mock/ODataQueryEngine.test.ts
   ODataQueryEngine
     ✓ should filter by string equality (5ms)
     ✓ should filter by greater than (gt) (2ms)
     ✓ should sort ascending (3ms)
     ... (16 more tests)
 
- PASS  wms/webapp/test/unit/mock/MockDataLoader.test.ts
+ PASS  test/unit/mock/MockDataLoader.test.ts
   MockDataLoader
     ✓ should initialize and load entity sets (15ms)
     ✓ should find entity by ID (5ms)
     ... (12 more tests)
 
- PASS  wms/webapp/test/unit/mock/MockRestService.test.ts
+ PASS  test/unit/mock/MockRestService.test.ts
   MockRestService
     ✓ should GET collection with OData format (10ms)
     ✓ should POST new entity (8ms)
@@ -332,7 +332,7 @@ npx playwright install --with-deps
 cd /Volumes/DevAPFS/work/ui5/mock-server-setup-check
 
 # Check that mock files exist
-ls wms/webapp/mock/services/
+ls mock/services/
 ```
 
 ### Issue: Tests pass but application doesn't run

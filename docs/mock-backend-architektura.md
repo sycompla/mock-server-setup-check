@@ -63,7 +63,7 @@ A WMS alkalmazás **8 különböző backend integrációs ponttal** rendelkezik:
 
 ### AppConfig.ts
 
-**Helye:** `wms/webapp/config/AppConfig.ts`
+**Helye:** `config/AppConfig.ts`
 
 **Feladat:** Központi konfiguráció kezelő osztály, amely:
 - Beolvassa a környezeti változókat (window object-ből)
@@ -184,7 +184,7 @@ node_modules
 ui5-local.yaml
 
 # Mock data customizations (optional)
-wms/webapp/mock/data/custom/
+mock/data/custom/
 
 # Build artifacts
 dist-mock/
@@ -203,7 +203,7 @@ dist-mock/
 ### Mock Adatok Könyvtár
 
 ```
-wms/webapp/mock/
+mock/
 ├── data/                           # Mock JSON adatok
 │   ├── master/                     # Master adatok
 │   │   ├── users.json              # 5 felhasználó
@@ -516,7 +516,7 @@ DeliveryNote
 
 ### MockDataLoader
 
-**Fájl:** `wms/webapp/mock/services/MockDataLoader.ts`
+**Fájl:** `mock/services/MockDataLoader.ts`
 
 **Feladatok:**
 1. JSON fájlok betöltése a `/mock/data/` könyvtárból
@@ -560,7 +560,7 @@ export class MockDataLoader {
 
 ### ODataQueryEngine
 
-**Fájl:** `wms/webapp/mock/services/ODataQueryEngine.ts`
+**Fájl:** `mock/services/ODataQueryEngine.ts`
 
 **Feladatok:**
 1. OData URL parsing
@@ -599,7 +599,7 @@ $filter=WarehouseCode eq 'WH01' and EnableBinLocations eq 'tYES'
 
 ### MockRestService
 
-**Fájl:** `wms/webapp/mock/services/MockRestService.ts`
+**Fájl:** `mock/services/MockRestService.ts`
 
 **Feladatok:**
 1. RestService interface implementálása
@@ -655,7 +655,7 @@ class MockRestService extends RestService {
 
 ### MockODBCService
 
-**Fájl:** `wms/webapp/mock/services/MockODBCService.ts`
+**Fájl:** `mock/services/MockODBCService.ts`
 
 **Feladatok:**
 - Stored procedure hívások mock-olása
@@ -685,7 +685,7 @@ class MockODBCService extends ODBCService {
 
 ### MockWebSocketService
 
-**Fájl:** `wms/webapp/mock/services/MockWebSocketService.ts`
+**Fájl:** `mock/services/MockWebSocketService.ts`
 
 **Feladatok:**
 - WebSocket interface mock-olása
@@ -728,7 +728,7 @@ class MockWebSocketService {
 
 ## ConfigService
 
-**Fájl:** `wms/webapp/services/ConfigService.ts`
+**Fájl:** `services/ConfigService.ts`
 
 **Feladatok:**
 1. Service factory - backend mód alapján helyes service instance létrehozása
@@ -1031,11 +1031,11 @@ npm run generate:mock-data
 
 ```bash
 # 1. Custom mock adatok létrehozása
-mkdir -p wms/webapp/mock/data/custom/
+mkdir -p mock/data/custom/
 
 # 2. JSON fájl másolása és szerkesztése
-cp wms/webapp/mock/data/master/items.json \
-   wms/webapp/mock/data/custom/items.json
+cp mock/data/master/items.json \
+   mock/data/custom/items.json
 
 # Edit custom/items.json...
 
@@ -1204,10 +1204,10 @@ describe('MockRestService Integration', () => {
 **Megoldás:**
 ```bash
 # Ellenőrzés
-ls -la wms/webapp/mock/data/master/
+ls -la mock/data/master/
 
 # JSON validáció
-cat wms/webapp/mock/data/master/items.json | jq .
+cat mock/data/master/items.json | jq .
 
 # Regenerálás
 npm run generate:mock-data

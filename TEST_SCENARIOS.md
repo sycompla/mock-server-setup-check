@@ -658,7 +658,7 @@ console.log('Is mock mode:', component.getConfigService().isMockMode());
 cd /Volumes/DevAPFS/work/ui5/mock-server-setup-check
 
 # Validate all JSON files
-for file in $(find wms/webapp/mock/data -name "*.json"); do
+for file in $(find mock/data -name "*.json"); do
     echo "Validating: $file"
     cat "$file" | jq . > /dev/null 2>&1
     if [ $? -eq 0 ]; then
